@@ -43,4 +43,9 @@ var (
 	ErrDimMismatch = errors.New("providers: returned embedding dimensions do not match the registered model")
 	// ErrCircuitOpen is returned by Guarded while its circuit breaker is open.
 	ErrCircuitOpen = errors.New("providers: circuit breaker open, not calling the provider")
+	// ErrMalformedResponse is returned when a provider's response fails
+	// structural validation (wrong vector count, duplicate/out-of-range
+	// index, ragged/empty/non-finite vector) -- never trusted as-is, and
+	// never published as a result.
+	ErrMalformedResponse = errors.New("providers: malformed or invalid embedding response")
 )
